@@ -1,0 +1,29 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "height": 200,
+    "width": 300,
+    "data": {"url": "https://raw.githubusercontent.com/arethasantosa/Draft/main/resident_study.csv"},
+    "mark": "rect",
+    "encoding": {
+      "y": {"field": "Home", "title": "State of Home Residence"},
+      "x": {"field": "Study", "title":"State of Institution of Study", "sort": "descending"},
+      "color": {"field": "People", "type": "quantitative",
+      "scale": {
+      "scheme": "yellowgreen"},
+      "title": ["Number Of","People"]
+      },
+      "tooltip":[{"field":"Home","title": "State of Home Residence"},
+      {"field": "Study", "title": "State of Institution of Study"},{"field": "People", "type": "ordinal", "title": "Number of Students"}]
+    },
+    "config": {
+      "axis": {"grid": true, "tickBand": "extent"},
+      "view":{"strokeWidth": 0,
+      "step": 20}
+    },
+    "config": {
+        "background":"#fcf3dc",
+        "view": {"stroke": null},
+        "axis": {"grid": false},
+        "font": "Helvetica"}
+  }
+  

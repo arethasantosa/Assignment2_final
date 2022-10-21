@@ -1,0 +1,153 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "height": 200,
+  "width": 300,
+  "data": {
+    "url": "https://raw.githubusercontent.com/arethasantosa/Draft/main/domestic_overseas.csv"
+  },
+  "params": [
+    {
+      "name": "Total_Above",
+      "value": 0,
+      "bind": {
+        "input": "range",
+        "min": 500,
+        "max": 100000,
+        "step": 1000,
+        "name": "Total Student: "
+      }
+    },
+    {
+      "name": "State_selection",
+      "bind": {
+        "input": "select",
+        "options": [
+        null,
+        "New South Wales",
+        "Victoria",
+        "Queensland",
+        "Western Australia",
+        "South Australia",
+        "Tasmania",
+        "Northern Territory",
+        "Australian Capital Territory"
+      ],
+      "labels": [
+        "Show All",
+        "New South Wales",
+        "Victoria",
+        "Queensland",
+        "Western Australia",
+        "South Australia",
+        "Tasmania",
+        "Northern Territory",
+        "Australian Capital Territory"
+      ],
+      "name": "State Selection: "
+      }
+    }
+  ],
+  "transform": [
+    {"filter": "datum.Domestic > 0"},
+    {"filter": "datum.Overseas > 0"},
+    {"filter": "datum.Total > Total_Above"},
+    {
+      "filter": "State_selection == null || datum.State == State_selection"
+    }
+  ],
+  "encoding": {
+    "x": {
+      "field": "Domestic",
+      "type": "quantitative",
+      "title": "Domestic Student",
+      "axis": {"tickCount": 10}
+    },
+    "y": {
+      "field": "Overseas",
+      "type": "quantitative",
+      "axis" :{"title": "Overseas Student"}
+          }
+  },
+  "layer": [
+    {
+      "mark": "circle",
+      "encoding": {
+        "size": {
+          "field": "Total",
+          "type": "quantitative",
+          "scale": {
+            "type": "threshold",
+            "domain": [10, 1000,10000, 40000, 60000, 100000],
+            "range": [10, 150, 300, 600, 1200]
+          },
+          "legend": {"format": ".1s"}
+        }, "color": {
+        "field": "State",
+        "type": "nominal",
+        "legend": null,
+        "scale": {
+          "domain": [
+        "New South Wales",
+        "Victoria",
+        "Queensland",
+        "Western Australia",
+        "South Australia",
+        "Tasmania",
+        "Northern Territory",
+        "Australian Capital Territory"
+           
+          ],
+          "range": [
+            "#e41a1c",
+            "#984ea3",
+            "#ff7f00",
+            "#a6cee3",
+            "#377eb8",
+            "#a65628",
+            "#321fb8",
+            "#96d700"
+          ]
+        }
+      },
+       "opacity": {"value": 0.6},
+      "tooltip": [
+        {"field": "State", "type": "nominal"},
+        {"field": "Domestic", "type": "quantitative", "format": ",", "title": "Number of Domestic Student"},
+        {"field": "Overseas", "type": "quantitative", "format": ",", "title": "Number of Overseas Student"},
+        {"field": "Institution"}
+      ]
+        }
+    }
+  ,{
+    "mark": {
+      "type": "text",
+      "align": "right",
+      "baseline": "middle",
+      "dx": 10,
+      "fontSize": 7,
+      "fontStyle": "italic"
+    },
+    "encoding": {
+      "text": {"field": "Institution", "type": "nominal"},
+      "color": {"value": "black"},
+      "opacity": {
+        "condition": {
+          "test": "datum['Institution'] == 'Monash University' || datum['Institution'] == 'The University of Western Australia' || datum['Institution'] == 'The Australian National University' || datum['Institution'] == 'University of New South Wales' || datum['Institution'] == 'The University of Adelaide' || datum['Institution'] == 'The University of Sydney' ||  datum['Institution'] == 'The University of Queensland' ||  datum['Institution'] == 'The University of Melbourne'",
+          "value": 1
+        },
+        "value": 0
+      },
+      "tooltip": [
+        {"field": "State", "type": "nominal"},
+        {"field": "Domestic", "type": "quantitative", "format": ",", "title": "Number of Domestic Student"},
+        {"field": "Overseas", "type": "quantitative", "format": ",", "title": "Number of Overseas Student"},
+        {"field": "Institution"}    
+      ]
+    }
+  }],
+  "config": {
+"background":"#fcf3dc",
+"view": {"stroke": null},
+"axis": {"grid": false},
+"font": "Helvetica"}
+}

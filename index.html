@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title> Education In Australia | Vizualisation Tool</title>
+  <!-- Import Vega & Vega-Lite (does not have to be from CDN) -->
+  <script src="https://cdn.jsdelivr.net/npm/vega@5.20.2"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.1.0"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.17.0"></script>
+
+  <!-- Import pure.css -->
+  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css"
+    integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Google font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+
+  <!-- CSS file -->
+  <link rel="stylesheet" type="text/css" href="styles.css" media="all">
+
+  <meta charset="UTF-8">
+
+</head> 
+
+<body>
+
+  <div class="page">
+  
+  <!-- pure grid group -->
+      <div class="pure-g">
+        <div class="pure-u-1-1">
+            <h1 style="text-align: center;">EDUCATION IN AUSTRALIA</h1>
+          <p style="text-align: center;font-size: large;">A story visualisation full of insights and exploration <br>
+            of education development in Australia. </p>
+          </div>
+        </div>
+  <!-- end pure grid group -->
+
+   <!-- pure grid group -->
+   <div class="pure-g2 small-font">
+    <p style="text-align:center; margin-left: 30px">"Education contributes to Australia's prosperity and social wellbeing. <br> Education support individuals, business, and nation to prosper." <br>
+     </p>
+  </div>
+    <!-- end pure grid group -->
+
+  <!-- pure grid group -->
+  <div class="pure-g">
+    <div class="pure-u-1-1">
+        <h2 class="description-left" style="margin-left: 30px">Why Study?</h2>
+    </div>
+      <div class="pure-u-2-5">
+        <div class="description-left" style="text-align:justify";>
+        <p>There are many reasons people want to study. Based on survey in 2019, <br>
+          there are 3 main reason people want to engage in education. <br>
+          The reason are people want to
+          <b style="color: #9a7fb2" class="bigger">INCREASE JOB PROSPECTS</b>,  
+          <b style="color: #6da1bc" class="bigger">INCREASE JOB SKILLS</b>, <br>
+          <b style="color: #d7d06d" class="bigger"> PERSONAL DEVELOPMENT</b> 
+          and <b style="color: #d77f6f" class="bigger">other</b> reason.
+          Almost half want to increase job prospects. <br>
+          By getting a good job,
+          people can be financially stable and fulfill the basic needs in life. </p>
+      </div>
+    </div>
+    <div class="pure-u-1-5">
+      <div id="vis1" class="vis-container2" style="margin-left: -25px; margin-bottom: 20px;"></div>
+    </div>
+  </div>
+<!-- end pure grid group -->
+
+<!-- pure grid group -->
+  <div class="pure-g">
+    <div class="pure-u-1-1">
+      <div class="description-centre">
+        <h2 style="text-align: center;">How Many Student In Australia?</h2>
+        <p style="text-align:center"><i> The choropleth maps below show how states in Australia differ in number of student</p></i>
+      </div>
+    </div>
+    <div class="center">
+      <div id="vis2" class="vis-container-map"></div>
+    </div>
+  </div>
+<!-- end pure grid group -->
+
+
+<!-- pure grid group -->
+<div class="pure-g">
+  <div class="pure-u-1-1">
+      <h2 style="text-align: center">Which School Are You In?</h2>
+  </div>
+    <div class="pure-u-2-5">
+      <div class="description-left" style ="text-align: justify";>
+        <p style="text-align: left">There are 3 type of school, 
+          <b style="color: #F04E47" class="bigger">Catholic</b>,
+          <b style="color: #F08247" class="bigger">Government</b> and 
+          <b style="color: #F0B547" class="bigger">Independent</b>.
+          Majority of students in Australia engage in <b style="color: #F08247" class="bigger">Government</b> based school.
+          Nonetheless, the number of student whos enrol in government based type decrease in 2021.
+          Overall, the number of student <span class="thicker"> INCREASE</span> for the past five year.
+         </p>
+    </div>
+  </div>
+  <div class="pure-u-1-5" style ="margin-top: 10px; margin-left: -40px;">
+    <div id="vis3"></div>
+  </div>
+</div>
+<!-- end pure grid group -->
+
+<!-- pure grid group -->
+<div class="pure-g">
+  <div class="pure-u-1-1">
+    <div class="description-centre">
+      <h2 style="text-align: center;">Australian Government Contribution To Education</h2>
+      <p style="text-align:center"><i> The choropleth maps below show how states in Australia differ in number of student <br>
+        whos engage in government based school and non-government based school.</p></i>
+    </div>
+  </div>
+  <div class="center">
+    <div id="vis4" class="vis-container-map"></div>
+  </div>
+</div>
+<!-- end pure grid group -->
+
+<!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-2">
+        <h2 style="text-align: left; margin-left: 30px">Does Gender And Age Correlated With Productivity?</h2>
+        <p style="text-align: left"> Statistics show male and female have different proportion of participation
+        in the early years until the latests. In the early years, between 15-24 years old, both gender are <b style="color: #F04E47" class="bigger">fully engaged</b> up to <span class="thicker">81.2%</span>. 
+        Whereas, in 25-44 years old, 18.6% of female did study nor work. On the other hand, number of people who <b style="color: #F0B547" class="bigger">did not participate</b>drop 0.7% for Male. 
+        Lastly, female who is 45-74 almost half of them <b style="color: #F0B547" class="bigger">did not participate</b>in the education and or workfield. </p> <br>
+        <p style="text-align: left"> Interestingly, female has higher number of people who is <b style="color: #F08247" class="bigger">partially engage </b>partially engage than male which are 24.3% and 11.2% in their latest year. </p>
+      </div>
+      <div class="pure-u-1-2">
+        <div id="vis6" class="vis-container2" style = "margin-left: 35px" ></div>
+      </div>
+    </div>
+  <!-- end pure grid group -->
+
+<!-- pure grid group -->
+<div class="pure-g2">
+  <div class="pure-u-1-1">
+    <div class="description-centre">
+      <h2 style="text-align: center; color: #ffffff;">LET'S EXPLORE MORE!</h2>
+      <p style="text-align:center"> <span class="thicker">Australia has among the most educated young people </span>in the OECD.
+        As we can see from the chart above, most people <span class="thicker">participate in study and or work </span> in their younger ages. Moreover, the number of student enrolment keep on <span class="thicker">increasing</span> thorugh out the year.
+      Now, Let's explore on the university level! </p>
+    </div>
+  </div>
+  <div class="center">
+  </div> 
+</div>
+<!-- end pure grid group -->
+
+<!-- pure grid group -->
+<div class="pure-g">
+  <div class="pure-u-1-1">
+    <div class="description-centre">
+      <h2 style="text-align: center">Are You Study In The Most Educated State?</h2>
+      <div id="vis8" class="vis-container" style="margin-left: 120px;"></div>
+    </div>
+  </div>
+</div>
+
+
+<!-- end pure grid group -->
+
+<!-- pure grid group -->
+<div class="pure-g">
+  <div class="pure-u-1-1">
+    <div class="description-centre">
+      <h2 style="text-align: center;">Domestic Student VS International Student</h2>
+      <p style="text-align:center"><i> Bubble chart below display domestic and international student on the higher education institution in Australia.
+         Take a look at group of eight universities in Australia!</p></i>
+    </div>
+  </div>
+  <div class="center">
+    <div id="vis9" class="vis-container2"></div>
+  </div>
+</div>
+<!-- end pure grid group -->
+
+
+<!-- pure grid group -->
+    <div class="pure-g">
+      <div class="pure-u-1-1 small-font">
+        <p>This visualisation is created by Aretha Sheridan Santosa. (32008805) </href></p>
+      </div>
+    </div>
+
+
+  </div> <!-- end page -->
+
+  <script type="text/javascript">
+    var specVis1 = "./Donutchart.json";
+    var specVis2 = "./mapau2.json";
+    var specVis3 = "./linechart_enrolment.json";
+    var specVis4 = "./mapau.json";
+    var specVis6 = "./grouped_bar_chart.json";
+    var specVis7 = "./isotype.json";
+    var specVis8 = "./heatmap.json";
+    var specVis9 = "./bubble_chart.json";
+    
+    
+
+
+
+    vegaEmbed('#vis1', specVis1, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis2', specVis2, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis3', specVis3, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis4', specVis4, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis6', specVis6, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis7', specVis7, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis8', specVis8, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+    vegaEmbed('#vis9', specVis9, { "actions": false }).then(function (result) {
+      // Access the Vega view instance (https://vega.github.io/vega/docs/api/view/) as result.view
+    }).catch(console.error);
+
+
+ 
+  </script>
+</body>
+
+</html>
